@@ -1,37 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import AddForm from './components/AddForm'
 import ShoppingList from './components/ShoppingList'
 
+
 function App() {
 
-  const shoppingItem = [
+  const shoppingItems = [
     {
-    id: 0,
-    wareName: "Sopp",
-    quantity: 5,
-    bought: false
+      id: 0,
+      name: "Sopp",
+      quantity: 5,
     },
     {
-    id: 1,
-    wareName: "Egg",
-    quantity: 1,
-    bought: true
+      id: 1,
+      name: "Egg",
+      quantity: 1,
     }
   ]
 
-  const [form, setForm] = useState({shoppingItem})
-  const [itemware, setShoppingList] = useState(shoppingItem)
+  const [items, setItems] = useState(shoppingItems)
+
+  const addItem = (newItem) => {
+    setItems((prev) => [newItem, ...prev])
+  }
 
   return (
     <main>
       <h1>Handleliste</h1>
-      <AddForm form={form} setForm={setForm}/>
-      <ShoppingList items={itemware} setShoppingList={setShoppingList} />
+      <AddForm onAdd={addItem} />
+      <ShoppingList items={items} setItems={setItems} />
     </main>
-  )
+    )
 }
 
 export default App

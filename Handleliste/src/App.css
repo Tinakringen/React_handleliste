@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Egen CSS */
+
+main {
+  background-color: #fff;
+  color: #000;
+  
+  h1{
+    text-align: left;
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+
+}
