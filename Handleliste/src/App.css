@@ -73,7 +73,6 @@ main {
     justify-content: space-between;
     margin: 0 1.5rem 2rem 1.5rem;
 
-
     input{
       background-color: #fff;
       color: #000;
@@ -87,7 +86,6 @@ main {
 
   }
 }
-
 
 .shoppingform {
   display: flex;
@@ -127,7 +125,5 @@ main {
     padding: 1rem;
     margin: 0 1rem; 
   }
-
-
 
 }

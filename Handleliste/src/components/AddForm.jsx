@@ -1,8 +1,8 @@
 import { useState } from "react"
-import "../style/form.scss"
 
 export default function AddForm({onAdd}){
 
+    const [error, setError] = useState("")
 
     const [item, setItem] = useState({
         name: "",
@@ -19,7 +19,13 @@ export default function AddForm({onAdd}){
     const handleClick = (e) => {
         e.preventDefault()
 
-        if (!item.name || !item.quantity) return
+        /// Fikk litt hjelp av den automatiske copilot her.
+        if (!item.name || !item.quantity) {
+            setError("Vennligst fyll inn både vare og antall.")
+            return
+        }
+        
+        setError("")
         
         onAdd({
             id: crypto.randomUUID(),
@@ -40,8 +46,9 @@ export default function AddForm({onAdd}){
             <label htmlFor="ware">Vare</label>
             <input name="name" type="text" id="ware" placeholder="Sopp.." value={item.name} onChange={handleChange}/>
             <label htmlFor="itemquantity">Antall</label>
-            <input name="quantity" type="number" id="itemquantity" min="0" placeholder="0" value={item.quantity} onChange={handleChange}/>
+            <input name="quantity" type="number" id="itemquantity" min="1" placeholder="0" value={item.quantity} onChange={handleChange}/>
             <button>Legg til vare</button>
+            {error && <p className="error">{error}</p>}
         </form>
     )
 }
