@@ -3,6 +3,7 @@ import "../style/form.scss"
 
 export default function AddForm({onAdd}){
 
+
     const [item, setItem] = useState({
         name: "",
         quantity: "",
@@ -17,10 +18,20 @@ export default function AddForm({onAdd}){
 
     const handleClick = (e) => {
         e.preventDefault()
-        const newItem = crypto.randomUUID()
-        setItem((prev) => ({...prev, id: newItem}))
-        console.log(item)
-        onAdd(item)
+
+        if (!item.name || !item.quantity) return
+        
+        onAdd({
+            id: crypto.randomUUID(),
+            name: item.name,
+            quantity: Number(item.quantity),
+            bought: false       
+        })
+
+        setItem({
+            name: "",
+            quantity: "",
+        })    
 
     }
 
@@ -29,7 +40,7 @@ export default function AddForm({onAdd}){
             <label htmlFor="ware">Vare</label>
             <input name="name" type="text" id="ware" placeholder="Sopp.." value={item.name} onChange={handleChange}/>
             <label htmlFor="itemquantity">Antall</label>
-            <input name="quantity" type="number" id="itemquantity" min="1" placeholder="1" value={item.quantity} onChange={handleChange}/>
+            <input name="quantity" type="number" id="itemquantity" min="0" placeholder="0" value={item.quantity} onChange={handleChange}/>
             <button>Legg til vare</button>
         </form>
     )

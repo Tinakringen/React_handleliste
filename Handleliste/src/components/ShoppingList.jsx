@@ -1,11 +1,11 @@
 import ShoppingItem from "./ShoppingItem";
 
-export default function ShoppingList({ items }) {
+export default function ShoppingList({ items, setItems }) {
 
     return (
-        <ul>
+        <ul id="list">
             {items.map((item) => (
-                <li key={item.id}>{item.name}</li>
+            <ShoppingItem key={item.id} id={item.id} name={item.name} quantity={item.quantity} bought={item.bought} setItems={setItems} />
             ))}
         </ul>
         )

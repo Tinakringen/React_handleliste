@@ -11,11 +11,13 @@ function App() {
       id: 0,
       name: "Sopp",
       quantity: 5,
+      bought: false
     },
     {
       id: 1,
       name: "Egg",
       quantity: 1,
+      bought: true
     }
   ]
 
@@ -27,9 +29,11 @@ function App() {
 
   return (
     <main>
+      <section className='container'>
       <h1>Handleliste</h1>
       <AddForm onAdd={addItem} />
       <ShoppingList items={items} setItems={setItems} />
+      </section>
     </main>
     )
 }
